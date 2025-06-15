@@ -1,5 +1,5 @@
 import EventCard from "./EventCard";
-import React from "react";
+
 
 export default function SimilarEvents() {
     return (
