@@ -58,12 +58,16 @@ export default function CreateEvent() {
 
                 <div>
                     <h1 className="font-bold text-3xl py-20 flex justify-around items-center">Event Description</h1>
-                    <div className="flex flex-col justify-around items-center">
-                        <p className="font-bold text-xs mb-4">Event image</p>
-                    <div className="h-60 w-175 bg-gray-300 rounded-md"></div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Event image</label>
+                        <input type="file" id="eventImageUpload" className="hidden" />
+                        <label 
+                        htmlFor="eventImageUpload" 
+                        className="cursor-pointer flex items-center justify-center w-full h-30 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-[#F2F2F266]">
+                        </label>
+                        
                     </div>
                 </div>
-
                 <div className=" flex flex-col justify-around items-center mt-8">
                     <h1 className="font-bold text-xs mb-4">Event description</h1>
                     <div className="h-40 w-175 bg-white rounded-md text-xs text-gray-400 px-5">Type here</div>
