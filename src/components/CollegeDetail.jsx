@@ -6,7 +6,7 @@ export default function CollegeDetail() {
     return (
         <section className="min-h-screen  p-6 flex flex-col justify-center items-center bg-gray-100 bg-cover m-0 ">
             <div className=" rounded-2xl overflow-hidden">
-               <img src={roorkee} alt="" className="md:w-310 md:h-140 px-2 rounded-2xl  "  />
+               <img src={roorkee} alt="" className="md:w-full md:h-auto  rounded-2xl  "  />
             </div>
             <h2 className="text-2xl font-bold pr-250 pt-4" >IIT Roorke</h2>
             <div className="w-290 p-4 rounded-md px-4">

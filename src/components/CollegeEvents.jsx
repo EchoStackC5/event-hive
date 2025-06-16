@@ -2,9 +2,9 @@ import EventCard from "./EventCard";
 
 export default function CollegeEvents() {
     return (
-        <section className=" min-h-screen mt-0 w-[full] mx-auto bg-gray-100 flex flex-col items-center bg-cover m-0 mb-20  ">
+        <section className=" min-h-screen mt-0 w-[full] mx-auto bg-gray-100 flex flex-col  bg-cover m-0 mb-20  ">
             <div>
-                <h1 className="mr-230 pt-5 text-3xl font-bold space-x-2">
+                <h1 className="pl-26 pt-5 text-3xl font-bold space-x-2">
                     <span>College</span>
                     <span className="text-primary">Events</span>
                 </h1>
