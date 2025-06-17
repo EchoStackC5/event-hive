@@ -7,7 +7,9 @@ export default function SubmitButton({ title,className }) {
         <div>
          <button className={`${className} ${pending && "animate pulse"}`} 
           type='submit' 
-          disabled= {pending}>{title}</button>
+          disabled= {pending}>
+            {pending ? "loading..." : title}
+          </button>
         </div>
-    )
+    );
 }
