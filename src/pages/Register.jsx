@@ -1,18 +1,26 @@
-import RegisterImage from "../assets/images/register.png"
+import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { useState } from "react";
 import GoogleIcon from "../assets/images/google-icon.png"
+import SubmitButton from "../components/SubmitButton";
+import { apiClient } from "../api/client";
 
 export default function Register() {
+    const navigate= useNavigate();
 
-    const [form, setForm] = useState({ name: '', password: '', confirmPassword: '' });
-
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-    };
+    const registerUser = async (data) => {
+        try {
+            const response = await apiClient.post("/users/register", data, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            console.log(response);
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className="flex h-screen font-sans">
@@ -43,7 +51,7 @@ export default function Register() {
                     </div>
 
                     {/* Form */}
-                    <div className="space-y-4">
+                    <form action={registerUser} className="space-y-4">
                         {/* Name Field */}
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-1.5">
@@ -52,8 +60,6 @@ export default function Register() {
                             <input
                                 type="name"
                                 name="name"
-                                value={form.name}
-                                onChange={handleChange}
                                 placeholder="Enter your name"
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
@@ -64,10 +70,8 @@ export default function Register() {
                                 Your Email
                             </label>
                             <input
-                                type="mail"
-                                name="mail"
-                                value={form.mail}
-                                onChange={handleChange}
+                                type="email"
+                                name="email"
                                 placeholder="Enter your email"
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
@@ -84,13 +88,11 @@ export default function Register() {
                             <input
                                 type="password"
                                 name="password"
-                                value={form.password}
-                                onChange={handleChange}
                                 placeholder="Enter your password"
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
                         </div>
-                        <div>
+                        {/* <div>
                             <div className="flex justify-between items-center mb-1.5">
                                 <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
                                     Confirm Password
@@ -100,19 +102,20 @@ export default function Register() {
                             <input
                                 type="password"
                                 name="password"
-                                value={form.password}
-                                onChange={handleChange}
+                               
                                 placeholder="Confirm your password"
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
-                        </div>
+                        </div> */}
+
 
                         {/* Sign In Button */}
                         <div className="items-center justify-center flex">
-                            <button className="w-[65%]  bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                                Sign Up
-                            </button>
+
+                            <SubmitButton className="w-[300px]  bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                                title={"Sign Up"} />
                         </div>
+
 
                         {/* Divider */}
                         <div className="relative">
@@ -124,12 +127,13 @@ export default function Register() {
                             </div>
                         </div>
 
-                        {/* Google Sign In Button */}
-                        <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-sm hover:shadow-md">
-                            <img src={GoogleIcon} alt="Google" className="w-5 h-5 mr-3" />
-                            Sign Up with Google
-                        </button>
-                    </div>
+                    </form>
+                    
+                    {/* Google Sign In Button */}
+                    <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-sm hover:shadow-md">
+                        <img src={GoogleIcon} alt="Google" className="w-5 h-5 mr-3" />
+                        Sign Up with Google
+                    </button>
                 </div>
             </div>
         </div>
