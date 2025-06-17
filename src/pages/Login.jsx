@@ -2,17 +2,29 @@ import LoginImage from "../assets/images/login.png"
 import { Link } from "react-router";
 import { useState } from "react";
 import GoogleIcon from "../assets/images/google-icon.png"
+import SubmitButton from "../components/SubmitButton";
+import { apiClient } from "../api/client";
+import { useNavigate } from "react-router";
 
 export default function Login() {
+    const navigate = useNavigate();
 
-    const [form, setForm] = useState({ name: '', password: '', confirmPassword: '' });
-
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
+    const loginUser = async (data) => {
+     try {
+        const response = await apiClient.post("/users/login",data,{
+            headers: {
+                "Content-Type":"application/json"
+            }
         });
-    };
+        console.log(response);
+        localStorage.setItem("ACCESS_TOKEN", response.data.data.accessToken);
+        navigate("/");
+     } catch (error) {
+        console.log(error);
+     }   
+    }
+
+
 
     return (
         <div className="flex h-screen font-sans">
@@ -33,7 +45,7 @@ export default function Login() {
                     </div>
 
                     {/* Form */}
-                    <div className="space-y-6">
+                    <form action={loginUser} className="space-y-6">
                         {/* Email Field */}
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-2">
@@ -41,9 +53,8 @@ export default function Login() {
                             </label>
                             <input
                                 type="email"
-                                name="mail"
-                                value={form.mail}
-                                onChange={handleChange}
+                                name="email"
+
                                 placeholder="Enter your email"
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
@@ -65,8 +76,7 @@ export default function Login() {
                             <input
                                 type="password"
                                 name="password"
-                                value={form.password}
-                                onChange={handleChange}
+
                                 placeholder="Enter your password"
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
@@ -74,9 +84,8 @@ export default function Login() {
 
                         {/* Sign In Button */}
                         <div className="items-center justify-center flex">
-                            <button className="w-[65%]  bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                                Sign In
-                            </button>
+                            <SubmitButton className="w-[300px]  bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg" title = {"Sign In"}/>
+                            
                         </div>
 
                         {/* Divider */}
@@ -89,12 +98,13 @@ export default function Login() {
                             </div>
                         </div>
 
-                        {/* Google Sign In Button */}
-                        <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-sm hover:shadow-md">
-                            <img src={GoogleIcon} alt="Google" className="w-5 h-5 mr-3" />
-                            Sign in with Google
-                        </button>
-                    </div>
+                    </form>
+
+                    {/* Google Sign In Button */}
+                    <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-sm hover:shadow-md">
+                        <img src={GoogleIcon} alt="Google" className="w-5 h-5 mr-3" />
+                        Sign in with Google
+                    </button>
                 </div>
             </div>
 
@@ -104,7 +114,7 @@ export default function Login() {
                 <div className="relative z-10 flex flex-col items-center justify-center h-screen text-white p-8">
                     <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Hello Friend</h1>
                     <p className="mb-6 text-center drop-shadow-md">To keep connected with us provide us with your information</p>
-                    <Link to ='/register' className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
+                    <Link to='/register' className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
                         Sign Up
                     </Link>
                 </div>
