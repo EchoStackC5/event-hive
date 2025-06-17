@@ -1,4 +1,5 @@
 import RegisterImage from "../assets/images/register.png"
+import { Link } from "react-router";
 import { useState } from "react";
 import GoogleIcon from "../assets/images/google-icon.png"
 
@@ -21,18 +22,18 @@ export default function Register() {
                 <div className="relative z-10 flex flex-col items-center justify-center h-screen text-white p-8">
                     <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Welcome Back</h1>
                     <p className="mb-6 text-center drop-shadow-md">To keep connected with us provide us with your information</p>
-                    <button className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
+                    <Link to="/login" className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
                         Sign In
-                    </button>
+                    </Link>
                 </div>
             </div>
 
             {/* Right side */}
             <div className="flex-1 lg:w-[58%] flex flex-col justify-center items-center bg-gray-50 px-8 lg:px-16 py-12">
-                <div className="w-full max-w-md space-y-8">
+                <div className="w-full max-w-md space-y-6">
                     {/* Header */}
                     <div className="text-center">
-                        <h2 className="text-lg font-semibold mb-2">
+                        <h2 className="text-lg font-semibold mb-1.5">
                             <span className="text-purple-600">Event</span>{' '}
                             <span className="text-gray-900">Hive</span>
                         </h2>
@@ -42,10 +43,10 @@ export default function Register() {
                     </div>
 
                     {/* Form */}
-                    <div className="space-y-6">
-                        {/* Email Field */}
+                    <div className="space-y-4">
+                        {/* Name Field */}
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-2">
+                            <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-1.5">
                                 Your Name
                             </label>
                             <input
@@ -57,10 +58,24 @@ export default function Register() {
                                 className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                             />
                         </div>
+                        {/* Email Field */}
+                        <div>
+                            <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-1.5">
+                                Your Email
+                            </label>
+                            <input
+                                type="mail"
+                                name="mail"
+                                value={form.mail}
+                                onChange={handleChange}
+                                placeholder="Enter your email"
+                                className="w-full px-4 py-3 border border-gray-200 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                            />
+                        </div>
 
                         {/* Password Field */}
                         <div>
-                            <div className="flex justify-between items-center mb-2">
+                            <div className="flex justify-between items-center mb-1.5">
                                 <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
                                     Password
                                 </label>
@@ -76,7 +91,7 @@ export default function Register() {
                             />
                         </div>
                         <div>
-                            <div className="flex justify-between items-center mb-2">
+                            <div className="flex justify-between items-center mb-1.5">
                                 <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
                                     Confirm Password
                                 </label>

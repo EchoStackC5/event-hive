@@ -1,4 +1,5 @@
 import LoginImage from "../assets/images/login.png"
+import { Link } from "react-router";
 import { useState } from "react";
 import GoogleIcon from "../assets/images/google-icon.png"
 
@@ -103,9 +104,9 @@ export default function Login() {
                 <div className="relative z-10 flex flex-col items-center justify-center h-screen text-white p-8">
                     <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Hello Friend</h1>
                     <p className="mb-6 text-center drop-shadow-md">To keep connected with us provide us with your information</p>
-                    <button className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
-                        Signup
-                    </button>
+                    <Link to ='/register' className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
+                        Sign Up
+                    </Link>
                 </div>
             </div>
 

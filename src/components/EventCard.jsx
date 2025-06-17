@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 export default function EventCard() {
     return (
         <div className="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden">
@@ -12,9 +13,9 @@ export default function EventCard() {
                 </span>
             </div>
             <div className="p-4 space-y-2">
-                <h1 className="text-base font-medium text-gray-900 leading-snug">
+                <Link to="/view-event" className="text-base font-medium text-gray-900 leading-snug">
                     BestSelller Book Bootcamp – write, Market & Publish Your Book – Lucknow
-                </h1>
+                </Link>
                 <p className="text-sm text-violet-600 font-medium">
                     Saturday, March 18, 9.30PM
                 </p>
