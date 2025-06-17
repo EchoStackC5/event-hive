@@ -10,18 +10,17 @@ export default function EventDetail() {
         <section>
             <div>
                 <img className='h-160 w-[100%] px-7 rounded-2xl' src={details} alt="" />
+                {/* <div className='inset-0 opacity-20 bg-black absolute h-160 w-[100%] px-7'></div> */}
             </div>
-            <Link to="/home">
                 <button className='flex bg-primary h-10 w-20 justify-center items-center text-white rounded-md absolute top-25 left-20'>
                     <img className='h-3 w-4' src={bicon} alt="" />
                     Back
                 </button>
-            </Link>
             <div className=' flex absolute top-50 left-10 items-center px-30'>
                 <div className='text-white'>
-                    <h1 className='font-bold text-4xl'>Dream world wide <br />in jakatra</h1>
-                    <p className='font-bold text-2xl mt-7'>IIIT Sonepat</p>
-                    <p className='text-xs w-[60%] py-3'>DesignHub organized a 3D Modeling Workshop using Blender on 16th February at 5 PM. The workshop taught participants the magic of creating stunning 3D models and animations using Blender. It was suitable for both beginners and experienced users. The event was followed by a blender-render competition, which added to the excitement.</p>
+                    <h1 className='font-bold text-5xl'>Dream world wide <br />in jakatra</h1>
+                    <p className='font-bold text-3xl mt-7'>IIIT Sonepat</p>
+                    <p className='text-sm w-[60%] py-3 mt-7'>DesignHub organized a 3D Modeling Workshop using Blender on 16th February at 5 PM. The workshop taught participants the magic of creating stunning 3D models and animations using Blender. It was suitable for both beginners and experienced users. The event was followed by a blender-render competition, which added to the excitement.</p>
                     <button className='flex'>
                         <img className='h-4 w-4' src={map} alt="" />
                         view map
