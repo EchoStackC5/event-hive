@@ -2,19 +2,21 @@ import details from '../assets/images/details.jpg'
 import bicon from '../assets/images/bicon.png'
 import map from '../assets/images/map.png'
 import gmap from '../assets/images/gmap.png'
-import { Facebook, Instagram, Twitter, Linkedin} from 'lucide-react'
+import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react'
+import { Link } from 'lucide-react'
 
 export default function EventDetail() {
     return (
         <section>
             <div>
-                <img className='h-130 w-[100%] px-7 rounded-2xl' src={details} alt="" />
+                <img className='h-160 w-[100%] px-7 rounded-2xl' src={details} alt="" />
             </div>
-            <button className='flex bg-primary h-10 w-20 justify-center items-center text-white rounded-md absolute top-25 left-20'>
-                <img className='h-3 w-4' src={bicon} alt="" />
-                Back
-            </button>
-
+            <Link to="/home">
+                <button className='flex bg-primary h-10 w-20 justify-center items-center text-white rounded-md absolute top-25 left-20'>
+                    <img className='h-3 w-4' src={bicon} alt="" />
+                    Back
+                </button>
+            </Link>
             <div className=' flex absolute top-50 left-10 items-center px-30'>
                 <div className='text-white'>
                     <h1 className='font-bold text-4xl'>Dream world wide <br />in jakatra</h1>
@@ -60,16 +62,16 @@ export default function EventDetail() {
                         <p className='bg-gray-100 h-6 w-26 rounded-sm flex justify-center items-center text-xs'>Jaskaran event</p>
                         <p className='bg-gray-100 h-6 w-8 rounded-sm flex justify-center items-center text-xs'>UI</p>
                     </div>
-                     <div className='mt-3 flex space-x-3'>
-                            <p className='bg-gray-100 h-6 w-15 rounded-sm flex justify-center items-center text-xs'>Seminar</p>
-                            <p className='bg-gray-100 h-6 w-26 rounded-sm flex justify-center items-center text-xs'>Jaskaran event</p>
-                        </div>
+                    <div className='mt-3 flex space-x-3'>
+                        <p className='bg-gray-100 h-6 w-15 rounded-sm flex justify-center items-center text-xs'>Seminar</p>
+                        <p className='bg-gray-100 h-6 w-26 rounded-sm flex justify-center items-center text-xs'>Jaskaran event</p>
+                    </div>
 
                     <h1 className='font-bold mt-7'>Share with friends</h1>
                     <div className='flex mt-4 space-x-4'>
                         <div className='bg-blue-600 h-9 w-9 text-white rounded-md items-center justify-center flex'><Facebook /></div>
                         <div className='bg-green-600 h-9 w-9 text-white rounded-md items-center justify-center flex'><Instagram /></div>
-                        <div className='bg-blue-700 h-9 w-9 text-white rounded-md items-center justify-center flex'><Linkedin/></div>
+                        <div className='bg-blue-700 h-9 w-9 text-white rounded-md items-center justify-center flex'><Linkedin /></div>
                         <div className='bg-blue-500 h-9 w-9 text-white rounded-md items-center justify-center flex'><Twitter /></div>
                     </div>
                 </div>
