@@ -1,14 +1,15 @@
 import { Star, MoreHorizontal } from "lucide-react";
 import { Link } from "react-router";
+import { imageBaseUrl } from "../api/client";
 
-export default function CollegeCard() {
+export default function CollegeCard({college}) {
     return (
         <div className="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden">
             {/* Image Container */}
             <div className="relative">
                 <img 
-                    src={'https://images.unsplash.com/photo-1603437119287-4a3732b685f9?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} 
-                    alt="Harvard University" 
+                    src={`${imageBaseUrl}/${college.image}`} 
+                    alt={college.name} 
                     className="w-full h-64 object-cover"
                 />
                 
@@ -28,9 +29,9 @@ export default function CollegeCard() {
             <div className="p-6">
                 <div className="flex justify-between items-start">
                     <div>
-                        <h1 className="text-xl font-bold text-gray-900 mb-2">Harvard University</h1>
+                        <h1 className="text-xl font-bold text-gray-900 mb-2">{college.name}</h1>
                         <div className="flex items-center gap-2">
-                            <h2 className="text-gray-600 text-sm">Cambridge, Massachusetts, UK</h2>
+                            <h2 className="text-gray-600 text-sm">{college.address}</h2>
                         </div>
                     </div>
                     
