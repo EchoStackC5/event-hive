@@ -33,9 +33,10 @@ export default function TrendingColleges() {
                 <span className="text-primary">colleges</span>
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                {data.data.map(college => <CollegeCard key={college.id}
-                    college={college} />)}
-            </div>
+  {Array.isArray(data?.data) && data.data.map(college => (
+    <CollegeCard key={college.id} college={college} />
+  ))}
+</div>
             <div className="flex justify-center items-center">
                 <Link to="#">
                     <button className="bg-primary text-white px-6 py-2 font-medium rounded-md">Load more...</button>
