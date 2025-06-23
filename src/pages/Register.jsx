@@ -26,8 +26,8 @@ export default function Register() {
         <div className="flex h-screen font-sans">
             {/* Left side */}
             <div className="w-[42%] h-full bg-cover bg-center relative bg-[url('./assets/images/register.png')]">
-                <div className="absolute inset-0 bg-black/50"></div>
-                <div className="relative z-10 flex flex-col items-center justify-center h-screen text-white p-8">
+                <div className="absolute  inset-0 bg-black/50"></div>
+                <div className="relative z-10 flex flex-col items-center justify-center  text-white p-8">
                     <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Welcome Back</h1>
                     <p className="mb-6 text-center drop-shadow-md">To keep connected with us provide us with your information</p>
                     <Link to="/login" className="bg-white/30 backdrop-blur-sm border border-white/20 hover:bg-white/40 transition-colors px-6 py-2 rounded-md">
