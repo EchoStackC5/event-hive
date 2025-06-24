@@ -1,8 +1,18 @@
-import { Menu, X } from "lucide-react";
+import { LogOut, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import useSWR from "swr";
+import { apiFetcher } from "../api/client";
+import { useNavigate } from "react-router";
+
 
 export default function Navbar() {
+    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { data } = useSWR("users/profile", apiFetcher);
+    const logout = () => {
+        localStorage.removeItem("ACCESS_TOKEN");
+        navigate("/login")
+    };
 
     // Close menu when window is resized to desktop size
     useEffect(() => {
@@ -22,14 +32,20 @@ export default function Navbar() {
 
     return (
         <nav className="sticky top-0 bg-white z-50">
-         
+
             <div className="flex justify-between items-center px-4 sm:px-8 py-4">
                 <h1 className="font-bold text-heading text-lg sm:text-xl">
                     <span>Event</span>
                     <span className="text-primary"> Hive</span>
                 </h1>
+                <div>
 
-              
+                    <h1>{data?.data?.name || "Unknown User"}</h1>
+                    <button onClick={logout} className="bg-primary cursor-pointer rounded-md py-2 px-4 text-white">
+                        logout
+                    </button>
+                </div>
+
                 <div className="hidden md:flex justify-center gap-4">
                     <button className="text-primary hover:text-primary/80 transition-colors">
                         <a href="/login">Login</a>
@@ -40,7 +56,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile menu button */}
-                <button 
+                <button
                     className="md:hidden p-2 text-primary hover:text-primary/80 transition-colors"
                     onClick={toggleMenu}
                     aria-label="Toggle menu"
@@ -50,11 +66,10 @@ export default function Navbar() {
             </div>
 
             {/* Mobile menu */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out ${
-                isMenuOpen 
-                    ? 'max-h-48 opacity-100' 
+            <div className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen
+                    ? 'max-h-48 opacity-100'
                     : 'max-h-0 opacity-0 overflow-hidden'
-            }`}>
+                }`}>
                 <div className="px-4 pb-4 space-y-3 bg-white border-t border-gray-100">
                     <button className="block w-full text-left text-primary hover:text-primary/80 transition-colors py-2">
                         <a href="/login" className="block">Login</a>
